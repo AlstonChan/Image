@@ -8,8 +8,8 @@ export interface Props {
   priority?: boolean;
 }
 
-export default function ImgRender(props: Props) {
-  const { src, alt, w, className, objFit, objOps, priority } = props;
+export default function Image(props: Props) {
+  const { src, alt, w, className, objFit, objOps, priority = false } = props;
 
   return (
     <img

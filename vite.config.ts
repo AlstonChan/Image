@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'src/index.tsx'),
-      name: 'image',
+      name: '@chan_alston/image',
       formats: ['es', 'umd'],
       fileName: (format) => `image.${format}.js`,
     },

@@ -1,6 +1,6 @@
 {
   "name": "@chan_alston/image",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A React image component",
   "keywords": [
     "React",
@@ -11,10 +11,19 @@
   "private": false,
   "license": "MIT",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/image.umd.cjs",
+  "module": "./dist/image.es.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlstonChan/Image"
+  },
+  "homepage": "https://github.com/AlstonChan/Image#readme",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ts-types": "tsc --emitDeclarationOnly --outDir dist"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -37,5 +46,6 @@
         "import": "./dist/image.es.js",
         "require": "./dist/image.umd.js"
     }
-  }
+  },
+  "types": "dist/index.d.ts"
 }
