@@ -2,6 +2,10 @@ export interface Props {
   src: string;
   alt: string;
   w?: string;
+  h?: string;
+  responsive?: boolean;
+  srcSet?: string;
+  sizes?: string;
   className?: string;
   objFit?: string;
   objPos?: string;
@@ -9,7 +13,19 @@ export interface Props {
 }
 
 export default function Image(props: Props) {
-  const { src, alt, w, className, objFit, objPos, priority = false } = props;
+  const {
+    src,
+    alt,
+    w = "",
+    h = "",
+    responsive = true,
+    srcSet = "",
+    sizes = "",
+    className = "",
+    objFit = "",
+    objPos = "",
+    priority = false,
+  } = props;
 
   let style = {};
   const responsiveWidth = { width: "100%", height: "auto" };
@@ -34,7 +50,7 @@ export default function Image(props: Props) {
     console.error(errorMsg);
   }
 
-  if (!w) {
+  if (!w || responsive) {
     style = { ...responsiveWidth };
   } else style = {};
 
@@ -78,7 +94,10 @@ export default function Image(props: Props) {
       decoding="async"
       loading={priority ? "eager" : "lazy"}
       width={w}
+      height={h}
       style={style}
+      srcSet={srcSet}
+      sizes={sizes}
     />
   );
 }
