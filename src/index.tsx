@@ -49,11 +49,6 @@ export default function Image(props: Props) {
     console.error(errorMsg);
   }
 
-  if (!alt) {
-    const errorMsg = `You should supply a descriptive text for the image, or put as empty("") for decorative image.`;
-    console.error(errorMsg);
-  }
-
   if (!w || responsive) {
     style = { ...responsiveWidth };
   } else style = {};
