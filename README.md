@@ -46,16 +46,17 @@ export default ImageComponent;
 
 ### Properties of `Image`
 
-| Properties  | Type    | Mandotary | Default Value |
-|--------------|:------:|:---------:|:-------------:|
-| src         | String  | true      |               |
-| alt         | String  | true      |               |
-| w           | String  | false     |               |
-| h           | String  | false     |               |
-| className   | String  | false     |               |
-| objFit      | String  | false     |               |
-| objPos      | String  | false     |               |
-| srcSet      | String  | false     |               |
-| sizes       | String  | false     |               |
-| responsive  | Boolean | false     | true          |
-| priority    | Boolean | false     | false         |
+| Properties  | Type                   | Mandotary | Default Value |
+|-------------|:----------------------:|:---------:|:-------------:|
+| src         | String                 | true      |               |
+| alt         | String                 | true      |               |
+| w           | String                 | false     |               |
+| h           | String                 | false     |               |
+| className   | String                 | false     |               |
+| objFit      | String                 | false     |               |
+| objPos      | String                 | false     |               |
+| srcSet      | String                 | false     |               |
+| sizes       | String                 | false     |               |
+| responsive  | Boolean                | false     | true          |
+| priority    | Boolean                | false     | false         |
+| imgRef      | React.MutableRefObject | false     | null          |

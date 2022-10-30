@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Props {
   src: string;
   alt: string;
@@ -10,6 +12,7 @@ export interface Props {
   objFit?: string;
   objPos?: string;
   priority?: boolean;
+  imgRef?: React.MutableRefObject<null | HTMLImageElement>;
 }
 
 export default function Image(props: Props) {
@@ -25,6 +28,7 @@ export default function Image(props: Props) {
     objFit = "",
     objPos = "",
     priority = false,
+    imgRef = null,
   } = props;
 
   let style = {};
@@ -98,6 +102,7 @@ export default function Image(props: Props) {
       style={style}
       srcSet={srcSet}
       sizes={sizes}
+      ref={imgRef}
     />
   );
 }
