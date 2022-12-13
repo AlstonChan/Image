@@ -52,7 +52,7 @@ export default function Image(props: Props) {
   }
 
   if (!w || responsive) {
-    css = { ...style, ...responsiveWidth };
+    css = { ...responsiveWidth, ...style };
   } else css = { ...style };
 
   if (objFit) {
@@ -69,7 +69,7 @@ export default function Image(props: Props) {
     );
     if (noSemiColons(objFit)) {
       if (objFitValueFound) {
-        css = { ...style, ...css, objectFit: objFit };
+        css = { ...css, objectFit: objFit, ...style };
       } else {
         const errorMsg =
           "Value inserted to objFit is invalid, please refer to https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit.";
@@ -80,7 +80,7 @@ export default function Image(props: Props) {
 
   if (objPos) {
     if (noSemiColons(objPos))
-      css = { ...style, ...css, objectPosition: objPos };
+      css = { ...css, objectPosition: objPos, ...style };
   }
 
   if (typeof priority !== "boolean") {
