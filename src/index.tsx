@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface Props {
   src: string;
@@ -13,6 +13,7 @@ export interface Props {
   objPos?: string;
   priority?: boolean;
   imgRef?: React.MutableRefObject<null | HTMLImageElement>;
+  style?: CSSProperties;
 }
 
 export default function Image(props: Props) {
@@ -29,9 +30,10 @@ export default function Image(props: Props) {
     objPos = "",
     priority = false,
     imgRef = null,
+    style = {},
   } = props;
 
-  let style = {};
+  let css = {};
   const responsiveWidth = { width: "100%", height: "auto" };
 
   const noSemiColons = (sty: string): boolean => {
@@ -50,8 +52,8 @@ export default function Image(props: Props) {
   }
 
   if (!w || responsive) {
-    style = { ...responsiveWidth };
-  } else style = {};
+    css = { ...style, ...responsiveWidth };
+  } else css = { ...style };
 
   if (objFit) {
     const objFitPossibleValue = [
@@ -67,7 +69,7 @@ export default function Image(props: Props) {
     );
     if (noSemiColons(objFit)) {
       if (objFitValueFound) {
-        style = { ...style, objectFit: objFit };
+        css = { ...style, ...css, objectFit: objFit };
       } else {
         const errorMsg =
           "Value inserted to objFit is invalid, please refer to https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit.";
@@ -77,7 +79,8 @@ export default function Image(props: Props) {
   }
 
   if (objPos) {
-    if (noSemiColons(objPos)) style = { ...style, objectPosition: objPos };
+    if (noSemiColons(objPos))
+      css = { ...style, ...css, objectPosition: objPos };
   }
 
   if (typeof priority !== "boolean") {
@@ -94,7 +97,7 @@ export default function Image(props: Props) {
       loading={priority ? "eager" : "lazy"}
       width={w}
       height={h}
-      style={style}
+      style={css}
       srcSet={srcSet}
       sizes={sizes}
       ref={imgRef}

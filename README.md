@@ -60,3 +60,4 @@ export default ImageComponent;
 | responsive  | Boolean                | false     | true          |
 | priority    | Boolean                | false     | false         |
 | imgRef      | React.MutableRefObject | false     | null          |
+| style       | CSSProperties          | false     | {}            |
