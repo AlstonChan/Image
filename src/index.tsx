@@ -1,15 +1,16 @@
 import React, { CSSProperties } from "react";
+import { noSemiColons } from "./helper";
 
 export interface Props {
   src: string;
   alt: string;
-  w?: string;
-  h?: string;
+  w?: string | number;
+  h?: string | number;
   responsive?: boolean;
   srcSet?: string;
   sizes?: string;
   className?: string;
-  objFit?: string;
+  objFit?: "contain" | "cover" | "fill" | "none" | "scale-down";
   objPos?: string;
   priority?: boolean;
   imgRef?: React.MutableRefObject<null | HTMLImageElement>;
@@ -35,16 +36,6 @@ export default function Image(props: Props) {
 
   let css = {};
   const responsiveWidth = { width: "100%", height: "auto" };
-
-  const noSemiColons = (sty: string): boolean => {
-    if (sty.includes(";")) {
-      const errorMsg =
-        "Warning: Style property values shouldn't contain a semicolon.";
-      console.error(errorMsg);
-      return false;
-    }
-    return true;
-  };
 
   if (src == "" || src == null) {
     const errorMsg = `Image src value is invalid and cannot be empty or null.`;
