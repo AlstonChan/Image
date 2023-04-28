@@ -28,8 +28,6 @@ const ImageComponent = ({ image }) => (
       w="100px"  // w stands for width
       h="100px" // h stands for height
       className={`${styles.myImage} ${styles.imgContainer}`}
-      objFit="contain"
-      objPos="bottom 10px right 20px"
       srcSet={`${myImgSmall} 500w,
               ${myImgMedium} 900w,
               ${qmyImgBig} 1400w`}
@@ -55,8 +53,6 @@ export default ImageComponent;
 | w           | String or Number       | false     |               |
 | h           | String or Number       | false     |               |
 | className   | String                 | false     |               |
-| objFit      | String                 | false     |               |
-| objPos      | String                 | false     |               |
 | srcSet      | String                 | false     |               |
 | sizes       | String                 | false     |               |
 | responsive  | Boolean                | false     | true          |

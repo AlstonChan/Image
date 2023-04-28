@@ -1,5 +1,4 @@
 import React, { CSSProperties } from "react";
-import { noSemiColons } from "./helper";
 
 export interface Props {
   src: string;
@@ -10,8 +9,6 @@ export interface Props {
   srcSet?: string;
   sizes?: string;
   className?: string;
-  objFit?: "contain" | "cover" | "fill" | "none" | "scale-down";
-  objPos?: string;
   priority?: boolean;
   imgRef?: React.MutableRefObject<null | HTMLImageElement>;
   style?: CSSProperties;
@@ -27,8 +24,6 @@ export default function Image(props: Props) {
     srcSet = "",
     sizes = "",
     className = "",
-    objFit = "",
-    objPos = "",
     priority = false,
     imgRef = null,
     style = {},
@@ -45,34 +40,6 @@ export default function Image(props: Props) {
   if (!w || responsive) {
     css = { ...responsiveWidth, ...style };
   } else css = { ...style };
-
-  if (objFit) {
-    const objFitPossibleValue = [
-      "contain",
-      "cover",
-      "fill",
-      "none",
-      "scale-down",
-    ];
-
-    const objFitValueFound = objFitPossibleValue.find(
-      (element) => element === objFit
-    );
-    if (noSemiColons(objFit)) {
-      if (objFitValueFound) {
-        css = { ...css, objectFit: objFit, ...style };
-      } else {
-        const errorMsg =
-          "Value inserted to objFit is invalid, please refer to https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit.";
-        console.error(errorMsg);
-      }
-    }
-  }
-
-  if (objPos) {
-    if (noSemiColons(objPos))
-      css = { ...css, objectPosition: objPos, ...style };
-  }
 
   if (typeof priority !== "boolean") {
     const errorMsg = `Value inserted to priority is using ${typeof priority} instead of boolean type, which may lead to unexpected outcome.`;
