@@ -1,16 +1,9 @@
 import React, { CSSProperties } from "react";
 
-type NextJsImage = {
-  src: string;
-  width: number;
-  height: number;
-  blurWidth: number;
-  blurheight: number;
-  blurDataURL: string;
-};
+import type { StaticImageData } from "next/image";
 
 export interface Props {
-  src: string | NextJsImage;
+  src: string | StaticImageData;
   alt: string;
   w?: string | number;
   h?: string | number;
