@@ -1,7 +1,16 @@
 import React, { CSSProperties } from "react";
 
-export interface Props {
+type NextJsImage = {
   src: string;
+  width: number;
+  height: number;
+  blurWidth: number;
+  blurheight: number;
+  blurDataURL: string;
+};
+
+export interface Props {
+  src: string | NextJsImage;
   alt: string;
   w?: string | number;
   h?: string | number;
@@ -30,31 +39,43 @@ export default function Image(props: Props) {
   } = props;
 
   let css = {};
+  let source;
+  let width = w;
+  let height = h;
   const responsiveWidth = { width: "100%", height: "auto" };
 
   if (src == "" || src == null) {
     const errorMsg = `Image src value is invalid and cannot be empty or null.`;
-    console.error(errorMsg);
+    throw new Error(errorMsg);
   }
 
-  if (!w || responsive) {
-    css = { ...responsiveWidth, ...style };
-  } else css = { ...style };
+  if (!width && !height) {
+    if (responsive) css = { ...responsiveWidth, ...style };
+  } else {
+    css = { ...style };
+  }
 
   if (typeof priority !== "boolean") {
     const errorMsg = `Value inserted to priority is using ${typeof priority} instead of boolean type, which may lead to unexpected outcome.`;
-    console.error(errorMsg);
+    throw new Error(errorMsg);
   }
+
+  if (typeof src === "object") {
+    source = src.src;
+
+    if (!w) width = src.width;
+    if (!h) height = src.height;
+  } else source = src;
 
   return (
     <img
-      src={src}
+      src={source}
       alt={alt}
       className={className}
       decoding="async"
       loading={priority ? "eager" : "lazy"}
-      width={w}
-      height={h}
+      width={width}
+      height={height}
       style={css}
       srcSet={srcSet}
       sizes={sizes}
