@@ -1,4 +1,4 @@
-name: Pulish package to npm registry
+name: Publish package to npm registry
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish-npm:
-    name: build and pulish package to npm registry
+    name: build and publish package to npm registry
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

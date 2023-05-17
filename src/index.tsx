@@ -22,7 +22,6 @@ export default function Image(props: Props) {
     alt,
     w = "",
     h = "",
-    responsive = true,
     srcSet = "",
     sizes = "",
     className = "",
@@ -30,6 +29,7 @@ export default function Image(props: Props) {
     imgRef = null,
     style = {},
   } = props;
+  let { responsive = true } = props;
 
   let css = {};
   let source;
@@ -42,8 +42,12 @@ export default function Image(props: Props) {
     throw new Error(errorMsg);
   }
 
+  if (width || height) responsive = false;
+
   if (!width && !height) {
     if (responsive) css = { ...responsiveWidth, ...style };
+  } else if (responsive) {
+    css = { ...responsiveWidth, ...style };
   } else {
     css = { ...style };
   }
