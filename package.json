@@ -1,6 +1,6 @@
 {
   "name": "@chan_alston/image",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "A React image component",
   "keywords": [
     "React",
@@ -27,19 +27,32 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "ts-types": "tsc --emitDeclarationOnly --outDir dist"
+    "ts-types": "tsc --emitDeclarationOnly --outDir dist",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^18.18.8",
-    "@types/react": "^18.2.36",
-    "@types/react-dom": "^18.2.14",
-    "@vitejs/plugin-react": "^4.1.1",
+    "@storybook/addon-essentials": "^7.6.0",
+    "@storybook/addon-interactions": "^7.6.0",
+    "@storybook/addon-links": "^7.6.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.6.0",
+    "@storybook/builder-vite": "^7.6.0",
+    "@storybook/nextjs": "^7.6.0",
+    "@storybook/react": "^7.6.0",
+    "@storybook/react-vite": "^7.6.0",
+    "@storybook/test": "^7.6.0",
+    "@types/node": "^18.18.13",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.0",
     "next": "^13.5.6",
-    "typescript": "^5.2.2",
+    "storybook": "^7.6.0",
+    "typescript": "^5.3.2",
     "vite": "^4.5.0",
     "vite-plugin-dts": "^3.6.3"
   },

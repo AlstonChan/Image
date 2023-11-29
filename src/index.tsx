@@ -1,3 +1,5 @@
+import "./styles.css";
+
 import React, { CSSProperties } from "react";
 
 import type { StaticImageData } from "next/image";
@@ -29,7 +31,15 @@ export default function Image(props: Props) {
     imgRef = null,
     style = {},
   } = props;
-  let { responsive = true } = props;
+  let { responsive } = props;
+  let userResponsiveness = responsive;
+
+  console.log(style);
+
+  // Have responsive "true" as default value
+  if (typeof responsive === undefined) {
+    responsive = true;
+  }
 
   let css = {};
   let source;
@@ -42,10 +52,15 @@ export default function Image(props: Props) {
     throw new Error(errorMsg);
   }
 
+  // default responsive to false if width or height is set
   if (width || height) responsive = false;
 
+  if (userResponsiveness) responsive = true;
+
   if (!width && !height) {
+    // if height and width are not defined, use responsive width
     if (responsive) css = { ...responsiveWidth, ...style };
+    // even if width and height is set, if responsive is true, set responsive width
   } else if (responsive) {
     css = { ...responsiveWidth, ...style };
   } else {
@@ -68,7 +83,7 @@ export default function Image(props: Props) {
     <img
       src={source}
       alt={alt}
-      className={className}
+      className={`default ${className}`}
       decoding="async"
       loading={priority ? "eager" : "lazy"}
       width={width}
