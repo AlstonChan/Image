@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+      - name: Update package version
+        run: npm version patch
       - name: Doing a clean installation of dependencies
         run: npm ci
       - name: build the package with vite
