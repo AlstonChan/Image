@@ -16,6 +16,7 @@ export interface Props {
   priority?: boolean;
   imgRef?: React.MutableRefObject<null | HTMLImageElement>;
   style?: CSSProperties;
+  placeholder?: string | StaticImageData;
 }
 
 export default function Image(props: Props) {
@@ -30,6 +31,7 @@ export default function Image(props: Props) {
     priority = false,
     imgRef = null,
     style = {},
+    placeholder,
   } = props;
   let { responsive } = props;
   let userResponsiveness = responsive;
@@ -65,6 +67,12 @@ export default function Image(props: Props) {
     css = { ...responsiveWidth, ...style };
   } else {
     css = { ...style };
+  }
+
+  if (placeholder) {
+    if (typeof placeholder === "object") {
+      css = { ...css, background: `url(${placeholder.src})` };
+    } else css = { ...css, backgroundImage: `url(${placeholder})` };
   }
 
   if (typeof priority !== "boolean") {

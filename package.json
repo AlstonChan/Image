@@ -28,7 +28,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "ts-types": "tsc --emitDeclarationOnly --outDir dist",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
   "dependencies": {

@@ -77,16 +77,11 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-  args: {
-    src: testImage1,
-    alt: "This is the alternative text",
-  },
+  args: {},
 };
 
 export const ImgWithWidthAndHeight: Story = {
   args: {
-    src: testImage1,
-    alt: "alternative text",
     w: "512",
     h: "512",
   },
@@ -94,8 +89,6 @@ export const ImgWithWidthAndHeight: Story = {
 
 export const ImgWithWidthAndHeight_Responsive: Story = {
   args: {
-    src: testImage1,
-    alt: "alternative text",
     w: "512",
     h: "512",
     responsive: true,
@@ -104,8 +97,7 @@ export const ImgWithWidthAndHeight_Responsive: Story = {
 
 export const ImageNotLoading: Story = {
   args: {
-    src: "not-found",
-    alt: "This is the alternative text",
+    src: "image-not-found",
     responsive: false,
   },
 };
