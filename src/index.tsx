@@ -61,7 +61,9 @@ export default function Image(props: Props) {
 
   if (!width && !height) {
     // if height and width are not defined, use responsive width
-    if (responsive) css = { ...responsiveWidth, ...style };
+    if (responsive) {
+      css = { ...responsiveWidth, ...style };
+    } else css = { ...style };
     // even if width and height is set, if responsive is true, set responsive width
   } else if (responsive) {
     css = { ...responsiveWidth, ...style };

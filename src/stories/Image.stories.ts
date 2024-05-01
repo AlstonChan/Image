@@ -101,3 +101,24 @@ export const ImageNotLoading: Story = {
     responsive: false,
   },
 };
+
+export const ImgNoWidthOrHeightWithStyle: Story = {
+  args: {
+    style: {
+      border: "3px solid red",
+      borderRadius: "50%",
+    },
+  },
+};
+
+export const ImgWidthAndHeight_Responsive_Style: Story = {
+  args: {
+    w: "512",
+    h: "512",
+    responsive: true,
+    style: {
+      border: "3px solid red",
+      borderRadius: "20%",
+    },
+  },
+};
