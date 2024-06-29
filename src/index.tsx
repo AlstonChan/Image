@@ -2,7 +2,14 @@ import "./styles.css";
 
 import React, { CSSProperties } from "react";
 
-import type { StaticImageData } from "next/image";
+interface StaticImageData {
+  src: string;
+  height: number;
+  width: number;
+  blurDataURL?: string;
+  blurWidth?: number;
+  blurHeight?: number;
+}
 
 export interface Props {
   src: string | StaticImageData;
@@ -35,8 +42,6 @@ export default function Image(props: Props) {
   } = props;
   let { responsive } = props;
   let userResponsiveness = responsive;
-
-  console.log(style);
 
   // Have responsive "true" as default value
   if (typeof responsive === undefined) {
