@@ -29,8 +29,7 @@
     "preview": "vite preview",
     "ts-types": "tsc --emitDeclarationOnly --outDir dist",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build",
-    "prepare": "husky install"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -51,7 +50,6 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "husky": "^8.0.3",
     "next": "^14.2.4",
     "storybook": "^8.1.11",
     "typescript": "^5.5.2",
